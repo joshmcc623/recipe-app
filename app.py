@@ -25,7 +25,7 @@ class Recipe(db.Model):
     cook_time = db.Column(db.Integer)  # Minutes
     servings = db.Column(db.Integer)
     instructions = db.Column(db.Text)  # store steps as one text block for now
-    is_baking = db.Column(db.boolean, default=False)  # cooking vs baking
+    is_baking = db.Column(db.Boolean, default=False)  # cooking vs baking
 
     def __repr__(self):
         return f"<Recipe {self.title}>"
@@ -33,7 +33,7 @@ class Recipe(db.Model):
 
 class Ingredient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Sting(100), nullable=False)  # e.g. "2", "1.5"
+    name = db.Column(db.String(100), nullable=False)  # e.g. "2", "1.5"
     quantity = db.Column(db.String(20))              # e.g. "cups", "tbsp", "g"
 
     recipe_id = db.Column(db.Integer, db.ForeignKey(

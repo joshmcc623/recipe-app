@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask import render_template
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///recipes.db"
@@ -11,6 +12,11 @@ db = SQLAlchemy(app)
 @app.route('/')
 def home():
     return "Recipe app is alive!"
+
+@app.route('/recipes')
+def list_recipes():
+    recipes = Recipe.query.all()
+    return render_template("recipes.html", recipes=recipes)
 
 
 if __name__ == "__main__":

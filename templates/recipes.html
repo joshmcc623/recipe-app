@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Recipes</title>
+</head>
+<body>
+    <h1>My Recipes</h1>
+    <ul>
+        {% for recipe in recipes %}
+            <li>
+                <strong>{{ recipe.title }}</strong>
+                ({{ recipe.prep_time }} min prep, {{ recipe.cook_time }} min cook)
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
